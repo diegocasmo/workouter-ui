@@ -4,11 +4,21 @@ import {getWorkout} from '../state/workout/workout-action-creators'
 import {getWorkout as getWorkoutSelector, isLoading} from '../state/workout/workout-selectors'
 import {Loading} from '../components/Loading'
 import {WorkoutSetup} from '../components/WorkoutDetail/WorkoutSetup'
+import {WorkoutExerciseList} from '../components/WorkoutDetail/WorkoutExerciseList'
 
 export class Workout extends Component {
-
   componentDidMount() {
     this.props.handleGetWorkout(this.props.workoutId)
+  }
+
+  renderWorkoutDetails() {
+    const {workout} = this.props
+    return (
+      <div>
+        <WorkoutSetup {...workout}/>
+        <WorkoutExerciseList workout={workout}/>
+      </div>
+    )
   }
 
   render() {
@@ -17,7 +27,7 @@ export class Workout extends Component {
         <h1>Workout Details</h1>
         {this.props.isLoading
           ? <Loading/>
-          : <WorkoutSetup {...this.props.workout}/>}
+          : this.renderWorkoutDetails()}
       </div>
     )
   }

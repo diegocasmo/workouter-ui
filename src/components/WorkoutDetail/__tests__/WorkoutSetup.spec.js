@@ -13,11 +13,12 @@ describe('<WorkoutSetup/>', () => {
 
   it('renders', () => {
     const wrapper = shallow(<WorkoutSetup {...props}/>)
-    expect(wrapper.find('.wrk-workout-setup__name').text()).to.be.equal(`Workout: ${props.name}`)
-    expect(wrapper.find('.wrk-workout-setup__rounds').text()).to.be.equal(`Rounds: ${props.rounds}`)
-    expect(wrapper.find('.wrk-workout-setup__rest-time-per-round').text())
+    expect(wrapper.find('.wkr-workout-setup__title').text()).to.be.equal('Setup:')
+    expect(wrapper.find('.wrk-workout-setup__workout-name').text()).to.be.equal(`Name: ${props.name}`)
+    expect(wrapper.find('.wrk-workout-setup__workout-rounds').text()).to.be.equal(`Rounds: ${props.rounds}`)
+    expect(wrapper.find('.wrk-workout-setup__workout-rest-time-per-round').text())
       .to.be.equal(`Rest time per round: ${props.restTimePerRound} second(s)`)
-    expect(wrapper.find('.wrk-workout-setup__rest-time-per-exercise').text())
+    expect(wrapper.find('.wrk-workout-setup__workout-rest-time-per-exercise').text())
       .to.be.equal(`Rest time per exercise: ${props.restTimePerExercise} second(s)`)
   })
 })

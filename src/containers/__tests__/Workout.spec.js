@@ -6,6 +6,7 @@ import {expect} from 'chai'
 import {Workout} from '../Workout'
 import {Loading} from '../../components/Loading'
 import {WorkoutSetup} from '../../components/WorkoutDetail/WorkoutSetup'
+import {WorkoutExerciseList} from '../../components/WorkoutDetail/WorkoutExerciseList'
 
 describe('<Workout>', () => {
 
@@ -23,6 +24,7 @@ describe('<Workout>', () => {
     const wrapper = mount(<Workout {...props}/>)
     expect(wrapper.find(Loading)).to.have.lengthOf(0)
     expect(wrapper.find(WorkoutSetup)).to.have.lengthOf(1)
+    expect(wrapper.find(WorkoutExerciseList)).to.have.lengthOf(1)
   })
 
   it("calls 'handleGetWorkout()' on 'componentDidMount()'", () => {

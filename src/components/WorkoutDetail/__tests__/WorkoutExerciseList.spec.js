@@ -3,6 +3,7 @@ import {Factory} from 'rosie'
 import {expect} from 'chai'
 import {shallow} from 'enzyme'
 import {WorkoutExerciseList} from '../WorkoutExerciseList'
+import {WorkoutExerciseItem} from '../WorkoutExerciseItem'
 
 describe('<WorkoutExerciseList/>', () => {
 
@@ -15,6 +16,7 @@ describe('<WorkoutExerciseList/>', () => {
 
   it('renders', () => {
     const wrapper = shallow(<WorkoutExerciseList {...props}/>)
-    expect(true).to.be.true
+    expect(wrapper.find('.wkr-workout-exercise-list__title').text()).to.be.equal('Exercises:')
+    expect(wrapper.find(WorkoutExerciseItem)).to.have.lengthOf(props.workout.exercises.length)
   })
 })

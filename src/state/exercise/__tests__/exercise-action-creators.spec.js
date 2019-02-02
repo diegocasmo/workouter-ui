@@ -101,7 +101,7 @@ describe('Exercise Action Creators', () => {
         .then(() => expect(store.getActions()).to.be.eql(expectedActions))
     })
 
-    it("dispatches 'DELETE_FAILURE' 'ERROR__ADD' on exercise delete failure", () => {
+    it("dispatches 'DELETE_FAILURE' and 'ERROR__ADD' on exercise delete failure", () => {
       const errorMsg = faker.lorem.words()
       sinon.stub(exercise, 'deleteExercise').rejects(new Error(errorMsg))
       const expectedActions = [

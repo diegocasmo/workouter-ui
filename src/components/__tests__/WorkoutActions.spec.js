@@ -22,7 +22,6 @@ describe('<WorkoutActions/>', () => {
       .to.be.equal('Update')
     expect(wrapper.find('.wkr-workout-actions__update').props().to)
       .to.be.equal(`/workouts/update/${props.workout.id}`)
-
     expect(wrapper.find('.wkr-workout-actions__delete').props().children)
       .to.be.equal('Delete')
     expect(wrapper.find('.wkr-workout-actions__delete').props().to)
@@ -62,7 +61,7 @@ describe('<WorkoutActions/>', () => {
       // Expect 'handleDeleteWorkout()' not to be called at all
       expect(props.handleDeleteWorkout.calledOnce).to.be.false
       // User canceled, so the redirection must be prevented
-      expect(event.preventDefault.called).to.be.true
+      expect(event.preventDefault.calledOnce).to.be.true
     })
   })
 })

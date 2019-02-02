@@ -17,7 +17,6 @@ describe('<WorkoutExerciseItem/>', () => {
     const title = weight > 0
       ? `${name} x${quantity} ${quantityUnit} @${weight} ${weightUnit}`
       : `${name} x${quantity} ${quantityUnit}`
-    expect(wrapper.find('.wrk-workout-exercise-item__title').text())
-      .to.be.equal(title)
+    expect(wrapper.find('.wrk-workout-exercise-item__title').text()).to.be.equal(title)
   })
 })

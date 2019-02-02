@@ -9,14 +9,12 @@ describe('<WorkoutExerciseList/>', () => {
 
   let props = null
   beforeEach(() => {
-    props = {
-      workout: Factory.build('workout')
-    }
+    props = Factory.build('workout')
   })
 
   it('renders', () => {
     const wrapper = shallow(<WorkoutExerciseList {...props}/>)
     expect(wrapper.find('.wkr-workout-exercise-list__title').text()).to.be.equal('Exercises:')
-    expect(wrapper.find(WorkoutExerciseItem)).to.have.lengthOf(props.workout.exercises.length)
+    expect(wrapper.find(WorkoutExerciseItem)).to.have.lengthOf(props.exercises.length)
   })
 })

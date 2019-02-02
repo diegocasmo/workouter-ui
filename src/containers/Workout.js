@@ -16,7 +16,7 @@ export class Workout extends Component {
     return (
       <div>
         <WorkoutSetup {...workout}/>
-        <WorkoutExerciseList workout={workout}/>
+        <WorkoutExerciseList {...workout}/>
       </div>
     )
   }

@@ -16,7 +16,7 @@ export const WorkoutActions = ({workout, handleDeleteWorkout}) => (
         if(window.confirm(msg)) {
           handleDeleteWorkout(workout.id)
         } else {
-          {/*Prevent redirect only if user cancels deletion*/}
+          // Prevent redirect only if user cancels deletion
           e.preventDefault()
         }
       }}>Delete</Link>

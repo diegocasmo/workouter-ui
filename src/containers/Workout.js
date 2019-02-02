@@ -1,10 +1,11 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {getWorkout} from '../state/workout/workout-action-creators'
+import {getWorkout, deleteWorkout} from '../state/workout/workout-action-creators'
 import {getWorkout as getWorkoutSelector, isLoading} from '../state/workout/workout-selectors'
 import {Loading} from '../components/Loading'
 import {WorkoutSetup} from '../components/WorkoutDetail/WorkoutSetup'
 import {WorkoutExerciseList} from '../components/WorkoutDetail/WorkoutExerciseList'
+import {WorkoutActions} from '../components/WorkoutActions'
 
 export class Workout extends Component {
   componentDidMount() {
@@ -13,12 +14,17 @@ export class Workout extends Component {
 
   renderWorkoutDetails() {
     const {workout} = this.props
-    return (
-      <div>
-        <WorkoutSetup {...workout}/>
-        <WorkoutExerciseList {...workout}/>
-      </div>
-    )
+    if(workout) {
+      return (
+        <div>
+          <WorkoutSetup {...workout}/>
+          <WorkoutExerciseList {...workout}/>
+          <WorkoutActions
+            workout={workout}
+            handleDeleteWorkout={this.props.handleDeleteWorkout}/>
+        </div>
+      )
+    }
   }
 
   render() {
@@ -45,6 +51,9 @@ const mapStateToProps = (state, {match}) => {
 const mapDispatchToProps = dispatch => ({
   handleGetWorkout(id) {
     dispatch(getWorkout(id))
+  },
+  handleDeleteWorkout(id) {
+    dispatch(deleteWorkout(id))
   }
 })
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import {UNITS} from '../../api/unit'
 
 export const WorkoutSetup = ({
   name,
@@ -11,10 +12,10 @@ export const WorkoutSetup = ({
     <p className="wrk-workout-setup__workout-name">Name: {name}</p>
     <p className="wrk-workout-setup__workout-rounds">Rounds: {rounds}</p>
     <p className="wrk-workout-setup__workout-rest-time-per-round">
-      Rest time per round: {restTimePerRound} second(s)
+      Rest time per round: {restTimePerRound} {UNITS.SECONDS.value}
     </p>
     <p className="wrk-workout-setup__workout-rest-time-per-exercise">
-      Rest time per exercise: {restTimePerExercise} second(s)
+      Rest time per exercise: {restTimePerExercise} {UNITS.SECONDS.value}
     </p>
   </div>
 )

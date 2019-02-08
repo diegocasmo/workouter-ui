@@ -23,11 +23,11 @@ export function UpdateExercise ({
       {isLoading
         ? <Loading/>
         : exercise && <ExerciseForm
-          submitText='Update'
-          history={history}
-          redirectTo='/exercises'
-          handleSubmit={(attrs) => updateExercise({...exercise, ...attrs})}
-          exercise={exercise}/>}
+            submitText='Update'
+            history={history}
+            redirectTo='/exercises'
+            handleSubmit={(attrs) => updateExercise({...exercise, ...attrs})}
+            exercise={exercise}/>}
     </>
   )
 }

@@ -19,14 +19,14 @@ export function NewWorkout ({
   return (
     <>
       <h1>New Workout</h1>
-      {isLoading ?
-        <Loading/> :
-        <WorkoutForm
-          history={history}
-          redirectTo='/workouts'
-          exercises={exercises}
-          handleSubmit={createWorkout}
-          submitText="Create Workout"/>}
+      {isLoading
+        ? <Loading/>
+        : <WorkoutForm
+            history={history}
+            redirectTo='/workouts'
+            exercises={exercises}
+            handleSubmit={createWorkout}
+            submitText="Create Workout"/>}
     </>
   )
 }

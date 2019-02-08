@@ -31,12 +31,12 @@ export function UpdateWorkout ({
       {isLoading
         ? <Loading/>
         : workout && <WorkoutForm
-          submitText='Update'
-          history={history}
-          redirectTo='/workouts'
-          handleSubmit={updateWorkout}
-          workout={workout}
-          exercises={exercises}/>}
+            submitText='Update'
+            history={history}
+            redirectTo='/workouts'
+            handleSubmit={updateWorkout}
+            workout={workout}
+            exercises={exercises}/>}
     </>
   )
 }

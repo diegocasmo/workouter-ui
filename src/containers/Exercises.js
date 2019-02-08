@@ -19,7 +19,9 @@ export function Exercises ({
       <h1>Exercises</h1>
       {isLoading
         ? <Loading/>
-        : exercises && <ExerciseList handleDeleteExercise={deleteExercise} exercises={exercises}/>}
+        : exercises && <ExerciseList
+            handleDeleteExercise={deleteExercise}
+            exercises={exercises}/>}
     </>
   )
 }

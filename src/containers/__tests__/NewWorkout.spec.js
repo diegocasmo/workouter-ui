@@ -32,7 +32,7 @@ describe('<NewWorkout/>', () => {
   })
 
   it('can submit a valid form', async () => {
-    act(() => { wrapper = mount(<Router><NewWorkout {...props}/></Router>) })
+    wrapper = mount(<Router><NewWorkout {...props}/></Router>)
 
     // Set a valid workout name
     wrapper.find("input[name='name']").simulate('change', {target: {id: 'name', value: 'foo'}})

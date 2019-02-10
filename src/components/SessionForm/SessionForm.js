@@ -36,7 +36,7 @@ export function SessionForm ({workout, init = initializeState}) {
       return (
         <Countdown
           finishAt={moment().add(10, 'seconds')}
-          onCountdownComplete={() => dispatch({type: ACTIONS.START})}/>
+          onCountdownCompleted={() => dispatch({type: ACTIONS.START})}/>
       )
   }
 }

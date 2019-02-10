@@ -4,5 +4,5 @@ import {Countdown} from '../Countdown'
 export const SessionRoundRest = ({finishAt, onRoundRestCompleted}) => (
   <Countdown
     finishAt={finishAt}
-    onCountdownComplete={onRoundRestCompleted}/>
+    onCountdownCompleted={onRoundRestCompleted}/>
 )

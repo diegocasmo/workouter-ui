@@ -67,11 +67,15 @@ describe('<SessionForm/>', () => {
       ...props,
       init: () => ({
         ...initializeState(props.workout),
-        status: SESSION_STATUS.EXERCISE_REST
+        status: SESSION_STATUS.EXERCISE_REST,
+        currExercise: 0
       })
     }
     wrapper = mount(<SessionForm {...props}/>)
     expect(wrapper.find(SessionExerciseRest)).to.have.lengthOf(1)
+    // Verify upcoming exercise is correctly passed to <SessionExerciseRest/>
+    const {currExercise, exercises} = props.init()
+    expect(wrapper.find(SessionExerciseRest).props().nextExercise).to.be.eql(exercises[currExercise])
   })
 
   it('renders rest time per round', () => {
@@ -84,6 +88,9 @@ describe('<SessionForm/>', () => {
     }
     wrapper = mount(<SessionForm {...props}/>)
     expect(wrapper.find(SessionRoundRest)).to.have.lengthOf(1)
+    // Verify upcoming exercise is correctly passed to <SessionRoundRest/>
+    const [firstExercise] = props.init().exercises
+    expect(wrapper.find(SessionRoundRest).props().nextExercise).to.be.eql(firstExercise)
   })
 
   it('renders completed session', () => {

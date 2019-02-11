@@ -27,21 +27,23 @@ export function SessionForm ({
     case SESSION_STATUS.EXERCISE_REST:
       return (
         <SessionExerciseRest
+          nextExercise={session.exercises[currExercise]}
           finishAt={moment().add(workout.restTimePerExercise, 'seconds')}
           onExerciseRestCompleted={() => dispatch({type: ACTIONS.EXERCISE_REST_COMPETED})}/>
       )
     case SESSION_STATUS.ROUND_REST:
       return (
         <SessionRoundRest
+          nextExercise={session.exercises[0]}
           finishAt={moment().add(workout.restTimePerRound, 'seconds')}
           onRoundRestCompleted={() => dispatch({type: ACTIONS.ROUND_REST_COMPETED})}/>
       )
     case SESSION_STATUS.COMPLETED:
       return <SessionCompleted
-              session={session}
-              onSubmit={onCreateSession}
-              onSubmitSuccess={onCreateSessionSuccess}
-              onSubmitFailure={onCreateSessionFailure}/>
+                session={session}
+                onSubmit={onCreateSession}
+                onSubmitSuccess={onCreateSessionSuccess}
+                onSubmitFailure={onCreateSessionFailure}/>
     default:
       return (
         <Countdown

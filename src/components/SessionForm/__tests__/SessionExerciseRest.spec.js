@@ -1,10 +1,12 @@
 import React from 'react'
 import {act} from 'react-dom/test-utils'
+import {Factory} from 'rosie'
 import sinon from 'sinon'
 import {expect} from 'chai'
 import {shallow, mount} from 'enzyme'
 import {SessionExerciseRest} from '../SessionExerciseRest'
 import {Countdown} from '../../Countdown'
+import {WorkoutExerciseItem} from '../../WorkoutDetail/WorkoutExerciseItem'
 const moment = require('moment')
 
 describe('<SessionExerciseRest/>', () => {
@@ -14,6 +16,7 @@ describe('<SessionExerciseRest/>', () => {
   beforeEach(() => {
     const now = moment()
     props = {
+      nextExercise: Factory.build('workout').exercises[0],
       finishAt: moment(now).add(5, 'seconds').valueOf(),
       onExerciseRestCompleted: sinon.spy()
     }
@@ -28,6 +31,8 @@ describe('<SessionExerciseRest/>', () => {
   it('renders', () => {
     const wrapper = shallow(<SessionExerciseRest {...props}/>)
     expect(wrapper.find(Countdown)).to.have.lengthOf(1)
+    expect(wrapper.find(WorkoutExerciseItem)).to.have.lengthOf(1)
+    expect(wrapper.find(WorkoutExerciseItem).props()).to.be.eql(props.nextExercise)
   })
 
   it('calls onExerciseRestCompleted() when countdown is finished', () => {

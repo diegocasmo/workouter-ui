@@ -9,7 +9,7 @@ import {SessionExercise} from '../SessionExercise'
 import {SessionExerciseRest} from '../SessionExerciseRest'
 import {SessionRoundRest} from '../SessionRoundRest'
 import {SessionCompleted} from '../SessionCompleted'
-import {Countdown} from '../../Countdown'
+import {SessionStartup} from '../SessionStartup'
 import {initializeState, SESSION_STATUS} from '../../../hooks/reducers/new-session-reducer'
 const moment = require('moment')
 
@@ -36,7 +36,10 @@ describe('<SessionForm/>', () => {
     wrapper = mount(<SessionForm {...props}/>)
     expect(wrapper.find(SessionForm)).to.have.lengthOf(1)
     expect(wrapper.find(SessionExercise)).to.have.lengthOf(0)
-    expect(wrapper.find(Countdown)).to.have.lengthOf(1)
+    expect(wrapper.find(SessionStartup)).to.have.lengthOf(1)
+    // Verify first exercise is correctly passed to <SessionStartup/>
+    const [firstExercise] = props.workout.exercises
+    expect(wrapper.find(SessionStartup).props().nextExercise).to.be.eql(firstExercise)
   })
 
   it('starts session once initial countdown is finished', () => {
